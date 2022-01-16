@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Yuldashevs's blog {% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 ">
+{% for post in object_list %}
+  <div class="col-md-4 ">
+    <div class="card mt-5" >
+      <img src="{{ post.image.url  }}" class="card-img-top"  height="250px" alt="{{ post.name }}">
+      <div class="card-body">
+        <h5 class="card-title" style="height: 100px">{{ post.name }}</h5>
+          <div  style="height: 100px; overflow:hidden">
+              <p class="card-text">{{  post.text | safe}}</p>
+          </div>
+
+<a href="{% url 'blog_detail' post.pk  %}" class="btn btn-primary">Ko'proq O'qish</a>
+      </div>
+    </div>
+  </div>
+      {% endfor %}
+</div>
+</div>
+{% endblock content %}
